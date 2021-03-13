@@ -2,7 +2,36 @@
 <html>
   <head>
     <title>Tip Calculator</title>
-    <script></script>
+    <script>
+        function calTipClick(){
+        var billAmount = document.getElementById("billAmount").value;
+        var serviceSelected = document.getElementById('serviceSelect').value;
+        var numofPeople = document.getElementById('numberOfPeople').value;
+        billAmount = parseInt(billAmount);
+        numofPeople = parseInt(numofPeople);
+        var tipPercent;
+        var tipAmount ;
+        if(serviceSelected=="1"){
+            tipPercent = 10;
+        }
+        else if(serviceSelected=="2"){
+            tipPercent = 0.20;
+        }
+        else if(serviceSelected=="3"){
+            tipPercent = 0.30;
+        }
+
+        var calAmount = (billAmount * tipPercent)/numofPeople;
+        if(numofPeople>1){
+        document.getElementById('TipAmount').innerHTML = "<h1>Each Person Should Give: $"+calAmount+" as a tip.</h1>"
+        }else{
+            document.getElementById('TipAmount').innerHTML = "<h1>You Should Give: $"+calAmount+" as a tip.</h1>"
+ 
+        }
+        
+        
+        }
+    </script>
   </head>
   <body>
     <div id="container">
@@ -18,7 +47,8 @@
       </select>
       <p>How many people were with you?</p>
       <input type="text"  id="numberOfPeople"   placeholder="Enter number of people."  />
-      <p><button id="calculateBtn">Calculate</button></p>
+      <p><button id="calculateBtn" onclick=(calTipClick())>Calculate</button></p>
+      <div id="TipAmount"></div>
     </div>
   </body>
 </html>
